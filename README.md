@@ -117,11 +117,10 @@ Here’s the M1 prototype running locally:
 
 ---
 
-## 👥 Team TMJ
-
-* **T** — Thao Huynh
-* **M** — Mareli
-* **J** — Jaco
+## 👥 Team TMJ's Roles (M1)
+- **Thao (T)** – Project Lead / Architect: repo setup, `create_app()`, blueprints, README.  
+- **Mareli (M)** – Frontend: HTML templates, CSS, progress bar layout.  
+- **Jacob (J)** – Backend: WTForms LoginForm, models, form validation logic.
 
 ---
 
