@@ -1,0 +1,122 @@
+# TMJ — Track My Journey
+
+## 📘 Overview
+
+TMJ (Track My Journey) is a simple Learning Management System (LMS) prototype focused on progress visibility.
+
+This Milestone 1 version is a non-functional Flask scaffold that demonstrates the app’s architecture and design setup.
+
+It includes basic routes, templates, and a static progress bar to visualize the concept.
+
+---
+
+## 🚀 How to Run Locally
+
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/ThaoHuynh94/tmj-lms.git](https://github.com/ThaoHuynh94/tmj-lms.git)
+    cd tmj-lms
+    ```
+
+2.  **Create and activate a virtual environment**
+    ```bash
+    python -m venv .venv
+    
+    # (Mac/Linux)
+    source .venv/bin/activate
+    
+    # (Windows)
+    .venv\Scripts\activate
+    ```
+
+3.  **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Run the app**
+    ```bash
+    python run.py
+    ```
+    Then open your browser and go to:
+    👉 [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+---
+
+## 🧱 Tech Stack
+
+* **Flask** — web framework
+* **Flask-SQLAlchemy** — ORM with SQLite (non-functional stub for M1)
+* **Flask-Login** — user management (wired but non-functional)
+* **Flask-WTF** — form handling
+* **HTML / CSS / Jinja2** — templates and styling
+
+---
+
+## 🗂️ Project Structure
+app/
+├── __init__.py          # app factory: create_app()
+├── config.py            # SQLite URI + SECRET_KEY placeholder
+├── models.py            # User + Course model stubs
+├── forms.py             # WTForms LoginForm
+├── auth/
+│   ├── __init__.py
+│   ├── routes.py        # /auth/login (GET render, POST validate + flash)
+│   └── templates/auth/login.html
+├── main/
+│   ├── __init__.py
+│   ├── routes.py        # / (index), /feature
+│   └── templates/main/
+│       ├── index.html
+│       └── feature.html
+├── templates/base.html  # base layout with nav + flash messages
+└── static/styles.css    # basic CSS styling
+run.py                   # entry point calling create_app()
+requirements.txt         # dependencies
+README.md                # setup/run, structure rationale, screenshot, team roles
+.gitignore               # ignored files
+
+
+---
+
+## 💡 Features (Milestone 1)
+
+* Flask app runs with no errors
+* Routes `/`, `/feature`, `/auth/login` render correctly
+* WTForms login form validates and flashes “Login not implemented.”
+* Static progress bar demo (60 %)
+* Base template with navigation and flash message area
+* SQLite + SQLAlchemy configured but not used yet
+
+---
+
+## 🎯 Next Steps
+
+* **M2:** Connect database and calculate real progress dynamically
+* **M3:** Add dashboards for students and instructors
+
+---
+
+## 📸 Screenshot
+
+Here’s the M1 prototype running locally:
+(ScreenShots)
+
+
+---
+
+## 👥 Team TMJ
+
+* **T** — Thao Huynh
+* **M** — Mareli
+* **J** — Jaco
+
+---
+
+## ✅ Milestone 1 Deliverables:
+
+* One-page concept summary (PDF)
+* Working Flask scaffold (HTML stubs only)
+* Tagged repo release `m1`
+
+
