@@ -81,6 +81,34 @@ README.md                # setup/run, structure rationale, screenshot, team role
 ```
 
 ---
+## 🔐 Login Page Flow
+
+
+```
+(base.html)
+   ↑
+   │ extends
+(login.html) ←──── render_template() ←──── (auth/routes.py) ←──── (forms.py)
+   │
+   │ inherits from base.html (nav, flash messages)
+   │
+   └── needs SECRET_KEY from config.py (for FlaskForm CSRF)
+
+```
+
+### Explanation:
+
+- base.html provides shared layout (nav + flash messages).
+
+- login.html extends base.html and renders the LoginForm.
+
+- auth/routes.py handles /auth/login (GET shows form, POST validates and flashes).
+
+- forms.py defines the LoginForm fields and validation.
+
+- config.py supplies SECRET_KEY for CSRF protection used by Flask-WTF.
+
+---
 
 ## 💡 Features (Milestone 1)
 
