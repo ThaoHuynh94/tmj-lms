@@ -143,6 +143,10 @@ Here’s the M1 prototype running locally:
 <img width="437" height="304" alt="Screenshot 2025-11-12 at 12 28 46 AM" src="https://github.com/user-attachments/assets/e5ab27cd-e301-4c7d-a3a4-3598d8f3890e" />
 
 
+#### Login Not implemented
+<img width="437" height="304" alt="image" src="https://github.com/user-attachments/assets/63066ee3-6091-44a3-ad87-099e4bf320cb" />
+
+
 ---
 
 ## 👥 Team TMJ's Roles (M1)
