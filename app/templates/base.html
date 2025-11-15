@@ -52,8 +52,23 @@
 
     <!--
       Flash message area:
-      - When a view calls flash("message"), that message shows up here.
-      - This lives in base.html so ALL pages can display feedback consistently.
+      -----------------------------------------------------------------
+      Purpose:
+        This block displays any messages "flashed" from your Flask routes.
+        Example in Python:
+            flash("Login not implemented yet!")
+            return redirect(url_for("main.index"))
+
+      How it works:
+        1. flash("message") stores the text temporarily in the session.
+        2. When the next page loads, get_flashed_messages() retrieves it.
+        3. The {% for m in messages %} loop shows each message on screen.
+        4. After displaying, the message disappears automatically.
+
+      Benefit:
+        By keeping this block in base.html, every page (home, feature, login)
+        can show messages without repeating this code.
+      -----------------------------------------------------------------
     -->
     {% with messages = get_flashed_messages() %}
       {% if messages %}
