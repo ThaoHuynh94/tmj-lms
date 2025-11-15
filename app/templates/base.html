@@ -1,6 +1,6 @@
 <!--
-  TEMPLATE RELATIONSHIP (how pages inherit layouts)
-
+  TEMPLATE RELATIONSHIP & PAGE FLOW
+  =======================================================================
   base.html  ←  main/index.html
   base.html  ←  main/feature.html
   base.html  ←  auth/login.html
@@ -9,6 +9,19 @@
   - base.html is the shared layout (shell) for the whole site.
   - Child templates extend base.html and fill the {% block content %} area.
   - The nav bar and flash messages live here so all pages get them.
+
+  HOW NAVIGATION WORKS
+  -----------------------------------------------------------------------
+  Each <a> link below connects to a Flask route.
+  Example:
+      <a href="{{ url_for('main.index') }}">Home</a>
+  When clicked:
+      1. Flask uses url_for('main.index') to find the route decorated with @main_bp.route("/")
+      2. That route (in main/routes.py) runs the index() function.
+      3. The function renders main/index.html.
+      4. index.html extends base.html, so Flask merges both templates and 
+         sends the full page (layout + content) back to the browser.
+  =======================================================================
 -->
 
 <!doctype html>
@@ -36,10 +49,10 @@
   <body>
     <!--
       Site-wide navigation.
-      These are clickable links that appear at the top because this <nav>
-      is the first element inside <body>. By default, browsers render from
-      top-to-bottom and left-to-right.
-      url_for('blueprint.endpoint') generates the correct URL:
+      These links appear horizontally at the top of every page because
+      this <nav> section is the first element inside <body>.
+      Browsers naturally render inline <a> elements side-by-side.
+      url_for('blueprint.endpoint') generates the correct URLs:
         - main.index   -> /
         - main.feature -> /feature
         - auth.login   -> /auth/login
@@ -54,8 +67,8 @@
       Flash message area:
       -----------------------------------------------------------------
       Purpose:
-        This block displays any messages "flashed" from your Flask routes.
-        Example in Python:
+        Displays any messages "flashed" from Flask routes.
+        Example:
             flash("Login not implemented yet!")
             return redirect(url_for("main.index"))
 
@@ -66,8 +79,8 @@
         4. After displaying, the message disappears automatically.
 
       Benefit:
-        By keeping this block in base.html, every page (home, feature, login)
-        can show messages without repeating this code.
+        Because this block lives in base.html, all pages (home, feature,
+        login) can show feedback messages without repeating code.
       -----------------------------------------------------------------
     -->
     {% with messages = get_flashed_messages() %}
