@@ -1,27 +1,78 @@
+<!--
+  TEMPLATE RELATIONSHIP (how pages inherit layouts)
+
+  base.html  ←  main/index.html
+  base.html  ←  main/feature.html
+  base.html  ←  auth/login.html
+
+  Explanation:
+  - base.html is the shared layout (shell) for the whole site.
+  - Child templates extend base.html and fill the {% block content %} area.
+  - The nav bar and flash messages live here so all pages get them.
+-->
+
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Character encoding (standard for modern webpages) -->
     <meta charset="utf-8">
+
+    <!-- Responsive behavior on phones (prevents tiny, zoomed-out pages) -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--
+      <title> is NOT shown on the page body.
+      It shows in the BROWSER TAB (and bookmarks/search results).
+      Child pages can override this with:
+        {% block title %}Home — TMJ{% endblock %}
+      If they don't, the default below ("TMJ — Track My Journey") is used.
+    -->
     <title>{% block title %}TMJ — Track My Journey{% endblock %}</title>
+
+    <!-- Link to your shared CSS file in /app/static/styles.css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
+
   <body>
+    <!--
+      Site-wide navigation.
+      These are clickable links that appear at the top because this <nav>
+      is the first element inside <body>. By default, browsers render from
+      top-to-bottom and left-to-right.
+      url_for('blueprint.endpoint') generates the correct URL:
+        - main.index   -> /
+        - main.feature -> /feature
+        - auth.login   -> /auth/login
+    -->
     <nav class="nav">
       <a href="{{ url_for('main.index') }}">Home</a>
       <a href="{{ url_for('main.feature') }}">Feature</a>
       <a href="{{ url_for('auth.login') }}">Login</a>
     </nav>
 
+    <!--
+      Flash message area:
+      - When a view calls flash("message"), that message shows up here.
+      - This lives in base.html so ALL pages can display feedback consistently.
+    -->
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         <ul class="flashes">
-          {% for m in messages %}<li>{{ m }}</li>{% endfor %}
+          {% for m in messages %}
+            <li>{{ m }}</li>
+          {% endfor %}
         </ul>
       {% endif %}
     {% endwith %}
 
-    <main>{% block content %}{% endblock %}</main>
+    <!--
+      Main content block:
+      - Child templates (index.html, feature.html, login.html) override this
+        with: {% block content %} ... {% endblock %}
+      - Keeps layout consistent while letting each page provide its own content.
+    -->
+    <main>
+      {% block content %}{% endblock %}
+    </main>
   </body>
 </html>
-
