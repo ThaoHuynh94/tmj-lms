@@ -146,6 +146,44 @@ Here’s the M1 prototype running locally:
 #### Login Not implemented
 <img width="437" height="304" alt="image" src="https://github.com/user-attachments/assets/63066ee3-6091-44a3-ad87-099e4bf320cb" />
 
+---
+
+# 🖼️ UI Sketches (All Milestones)
+
+Below are the wireframes for TMJ, illustrating the planned UI layout for all project milestones.
+
+---
+
+## **Milestone 1 — Basic Static UI Layout**
+
+### **Home Page Sketch**
+![Home Page Sketch](docs/home-page.png)
+
+### **Feature Demo Sketch**
+![Feature Demo Sketch](docs/feature-demo.png)
+
+### **Login Page Sketch**
+![Login Sketch](docs/login.png)
+
+---
+
+## **Milestone 2 — Dynamic Course Progress Pages**
+
+### **Course In Progress**
+_Shows real-time completion values using database data._
+![Course In Progress](docs/course-in-progress.png)
+
+### **Course Completed**
+_Displays when a student finishes all lessons and objectives._
+![Course Completed](docs/course-completed.png)
+
+---
+
+## **Milestone 3 — Student Dashboard**
+
+### **Student Dashboard Sketch**
+_Overall progress summary, current course details, and upcoming tasks._
+![Student Dashboard](docs/user-page.png)
 
 ---
 
