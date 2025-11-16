@@ -137,7 +137,7 @@ Here’s the M1 prototype running locally:
 <img width="437" height="304" alt="UI Screenshot" src="docs/home.png" />
 
 #### Feature Page
-<img width="437" height="304" alt="Screenshot 2025-11-12 at 12 28 30 AM" src="https://github.com/user-attachments/assets/098b1b33-98f1-4ee9-8505-097abaaffef9" />
+<img width="437" height="304" alt="UI Screenshot" src="docs/featurepage.png" />
 
 #### Login Page
 <img width="437" height="304" alt="Screenshot 2025-11-12 at 12 28 46 AM" src="https://github.com/user-attachments/assets/e5ab27cd-e301-4c7d-a3a4-3598d8f3890e" />
