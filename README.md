@@ -81,6 +81,34 @@ README.md                # setup/run, structure rationale, screenshot, team role
 ```
 
 ---
+## 🔐 Login Page Flow
+
+
+```
+(base.html)
+   ↑
+   │ extends
+(login.html) ←──── render_template() ←──── (auth/routes.py) ←──── (forms.py)
+   │
+   │ inherits from base.html (nav, flash messages)
+   │
+   └── needs SECRET_KEY from config.py (for FlaskForm CSRF)
+
+```
+
+### Explanation:
+
+- base.html provides shared layout (nav + flash messages).
+
+- login.html extends base.html and renders the LoginForm.
+
+- auth/routes.py handles /auth/login (GET shows form, POST validates and flashes).
+
+- forms.py defines the LoginForm fields and validation.
+
+- config.py supplies SECRET_KEY for CSRF protection used by Flask-WTF.
+
+---
 
 ## 💡 Features (Milestone 1)
 
@@ -114,6 +142,48 @@ Here’s the M1 prototype running locally:
 #### Login Page
 <img width="437" height="304" alt="Screenshot 2025-11-12 at 12 28 46 AM" src="https://github.com/user-attachments/assets/e5ab27cd-e301-4c7d-a3a4-3598d8f3890e" />
 
+
+#### Login Not implemented
+<img width="437" height="304" alt="image" src="https://github.com/user-attachments/assets/63066ee3-6091-44a3-ad87-099e4bf320cb" />
+
+---
+
+# 🖼️ UI Sketches (All Milestones)
+
+Below are the wireframes for TMJ, illustrating the planned UI layout for all project milestones.
+
+---
+
+## **Milestone 1 — Basic Static UI Layout**
+
+### **Home Page Sketch**
+![Home Page Sketch](docs/home-page.png)
+
+### **Feature Demo Sketch**
+![Feature Demo Sketch](docs/feature-demo.png)
+
+### **Login Page Sketch**
+![Login Sketch](docs/login.png)
+
+---
+
+## **Milestone 2 — Dynamic Course Progress Pages**
+
+### **Course In Progress Sketch**
+_Shows real-time completion values using database data._
+![Course In Progress](docs/course-in-progress.png)
+
+### **Course Completed Sketch**
+_Displays when a student finishes all lessons and objectives._
+![Course Completed](docs/course-completed.png)
+
+---
+
+## **Milestone 3 — Student Dashboard**
+
+### **Student Dashboard Sketch**
+_Overall progress summary, current course details, and upcoming tasks._
+![Student Dashboard](docs/user-page.png)
 
 ---
 
