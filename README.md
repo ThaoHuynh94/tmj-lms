@@ -148,42 +148,29 @@ Here’s the M1 prototype running locally:
 
 ---
 
-# 🖼️ UI Sketches (All Milestones)
+## 🖼️ UI Sketches (All Milestones)
 
-Below are the wireframes for TMJ, illustrating the planned UI layout for all project milestones.
+### M1 — Home Page Sketch
+<img width="437" src="docs/home-page.png" />
 
----
+### M1 — Feature Demo Sketch
+<img width="437" src="docs/feature-demo.png" />
 
-## **Milestone 1 — Basic Static UI Layout**
-
-### **Home Page Sketch**
-![Home Page Sketch](docs/home-page.png)
-
-### **Feature Demo Sketch**
-![Feature Demo Sketch](docs/feature-demo.png)
-
-### **Login Page Sketch**
-![Login Sketch](docs/login.png)
+### M1 — Login Sketch
+<img width="437" src="docs/login.png" />
 
 ---
 
-## **Milestone 2 — Dynamic Course Progress Pages**
+### M2 — Course In Progress
+<img width="437" src="docs/course-in-progress.png" />
 
-### **Course In Progress Sketch**
-_Shows real-time completion values using database data._
-![Course In Progress](docs/course-in-progress.png)
-
-### **Course Completed Sketch**
-_Displays when a student finishes all lessons and objectives._
-![Course Completed](docs/course-completed.png)
+### M2 — Course Completed
+<img width="437" src="docs/course-completed.png" />
 
 ---
 
-## **Milestone 3 — Student Dashboard**
-
-### **Student Dashboard Sketch**
-_Overall progress summary, current course details, and upcoming tasks._
-![Student Dashboard](docs/user-page.png)
+### M3 — Student Dashboard
+<img width="437" src="docs/user-page.png" />
 
 ---
 
