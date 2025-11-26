@@ -575,6 +575,16 @@ body {
   color: #111827;
 }
 
+.home-secondary-link {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.home-secondary-link a {
+  color: #2563EB;   /* blue link */
+  text-decoration: underline;
+}
 
 
 
