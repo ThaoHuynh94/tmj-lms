@@ -210,13 +210,16 @@ Jacob — Backend Progress & Models
 ## 📸 Screenshots 
 
 ### Home Page
-
+<img width="715" height="441" alt="Screenshot 2025-11-26 at 4 30 56 PM" src="https://github.com/user-attachments/assets/da78900a-f244-4727-ae96-4b1710e080b6" />
 
 ### Feature Page
 
+<img width="715" height="441" alt="Screenshot 2025-11-26 at 4 31 06 PM" src="https://github.com/user-attachments/assets/f7ed03f3-2ee7-482e-95e1-3b9e4d5dc975" />
+<img width="715" height="441" alt="Screenshot 2025-11-26 at 4 31 12 PM" src="https://github.com/user-attachments/assets/dee639b3-47f4-4a34-9385-ec615a901b48" />
 
 
 ### Login Page
+<img width="715" height="441" alt="Screenshot 2025-11-26 at 4 31 25 PM" src="https://github.com/user-attachments/assets/a828e97f-cfc8-47bb-9410-d3daa0d61f79" />
 
 
 ### Course Detail Page
