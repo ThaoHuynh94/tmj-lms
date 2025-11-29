@@ -1,59 +1,69 @@
-# TMJ — Track My Journey
+# TMJ — Track My Journey  
+_A lightweight LMS companion focused on clear progress tracking_
+
+---
 
 ## 📘 Overview
 
-TMJ (Track My Journey) is a simple Learning Management System (LMS) prototype focused on progress visibility.
+TMJ (Track My Journey) is a minimalist LMS prototype designed to help students clearly understand how far they’ve progressed in a course. Many LMS platforms hide progress indicators or bury them in menus, which reduces motivation. TMJ highlights course completion with intuitive progress bars, module breakdowns, and clear completion indicators.
 
-This Milestone 1 version is a non-functional Flask scaffold that demonstrates the app’s architecture and design setup.
+This **Milestone 2** release extends the M1 scaffold into a functional prototype featuring:
 
-It includes basic routes, templates, and a static progress bar to visualize the concept.
+- Working login/logout with **Flask-Login**
+- Database-backed course and module progress
+- A full **Course Detail** page with completion UI
+- Updated UI using **AI-generated branding**
+- A passing **pytest** test suite
 
 ---
 
 ## 🚀 How to Run Locally
 
-1.  **Clone the repository**
-    ```bash
-    git clone [https://github.com/ThaoHuynh94/tmj-lms.git](https://github.com/ThaoHuynh94/tmj-lms.git)
-    cd tmj-lms
-    ```
+### 1. Clone the repository
+```bash
+git clone https://github.com/ThaoHuynh94/tmj-lms.git
+cd tmj-lms
+```
 
-2.  **Create and activate a virtual environment**
-    ```bash
-    python -m venv .venv
-    
-    # (Mac/Linux)
-    source .venv/bin/activate
-    
-    # (Windows)
-    .venv\Scripts\activate
-    ```
+## 2. Create & activate a virtual environment
+* python -m venv .venv
+* source .venv/bin/activate     # Mac/Linux
+* .venv\Scripts\activate        # Windows
 
-3.  **Install dependencies**
-    ```bash
-    pip install -r requirements.txt
-    ```
+## 3. Install dependencies
+pip install -r requirements.txt
 
-4.  **Run the app**
-    ```bash
-    python run.py
-    ```
-    Then open your browser and go to:
-    👉 [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+## 4. Run the app
+```
+python run.py
+```
 
----
+Visit in browser:
+👉 http://127.0.0.1:5000/
+
+## 5. Run tests
+```
+pytest
+```
+
 
 ## 🧱 Tech Stack
 
-* **Flask** — web framework
-* **Flask-SQLAlchemy** — ORM with SQLite (non-functional stub for M1)
-* **Flask-Login** — user management (wired but non-functional)
-* **Flask-WTF** — form handling
-* **HTML / CSS / Jinja2** — templates and styling
+* - Flask (backend + routing)
 
----
+* - Flask-SQLAlchemy (SQLite database)
 
-## 🗂️ Project Structure
+* - Flask-Login (authentication)
+
+* - WTForms (form validation)
+
+* - Jinja2 + HTML/CSS (templates & styling)
+
+* - pytest (unit testing)
+
+* - AI-generated images/video (branding)
+ 
+## 🗂️ Project Structure (M2)
 
 ```
 app/
@@ -63,163 +73,166 @@ app/
 ├── forms.py
 
 ├── auth/
-│   ├── __init__.py
 │   ├── routes.py
 │   └── templates/auth/
 │       └── login.html
 
 ├── main/
-│   ├── __init__.py
 │   ├── routes.py
 │   └── templates/main/
 │       ├── index.html
 │       ├── feature.html
 │       └── course_detail.html   ← NEW (M2)
-│
+
 ├── templates/
 │   └── base.html
 
 └── static/
     ├── styles.css
-    ├── img/                    ← NEW
+    ├── img/                    ← NEW (M2)
     │   ├── tmj-logo.png
-    │   ├── course-python.png
-    │   ├── completion-badge.png
+    │   ├── Home-page.png
     │   ├── feature-hero.png
-    │   └── any other course thumbnails…
-    │
-    ├── video/                  ← NEW
-    │   ├── login-hero.mp4
-    │   └── optional future videos…
-    │
-    └── js/ (optional)          ← if needed JS later
+    │   ├── course-python.png
+    │   ├── Completion Badge.png
+    ├── video/                  ← NEW (M2)
+    │   └── login-hero.mp4
+
+tests/
+    └── test_routes.py   ← NEW (M2)
 
 ```
+## ✨ M2 Features
+### 🔐 Login Page (Mareli + Thao)
 
----
-## 🔐 Login Page Flow
+Flask-Login session management
 
+WTForms validation
+
+Neon-style UI
+
+AI-generated hero video
+
+###  📊 Dynamic Progress Updates (Jacob)
+
+SQLAlchemy User/Course/Module models
+
+Module tracking → course progress calculation
+
+/courses/<id> shows real progress
+
+### 🎨 Course Detail UI (Thao)
+
+Course thumbnail
+
+Progress bar
+
+Completed & upcoming modules
+
+Completion banner
+
+Completion badge (AI image)
+
+###  🏠 UI Enhancements (Thao)
+
+Homepage hero section
+
+Feature page hero image
+
+Updated navigation & layout
+
+Consistent global CSS design
+
+### 🧪 Unit Tests (M2 Requirement)
+
+Route tests: /, /feature, /auth/login
+
+All tests passing:
 
 ```
-(base.html)
-   ↑
-   │ extends
-(login.html) ←──── render_template() ←──── (auth/routes.py) ←──── (forms.py)
-   │
-   │ inherits from base.html (nav, flash messages)
-   │
-   └── needs SECRET_KEY from config.py (for FlaskForm CSRF)
+3 passed in 0.39s
 
 ```
+###  ✔ Milestone 2 Deliverables Completed
 
-### Explanation:
+App runs with no errors
 
-- base.html provides shared layout (nav + flash messages).
+70%+ MVP functionality met
 
-- login.html extends base.html and renders the LoginForm.
+Login/logout functional
 
-- auth/routes.py handles /auth/login (GET shows form, POST validates and flashes).
+Database-backed progress updates
 
-- forms.py defines the LoginForm fields and validation.
+All pages extend shared base.html
 
-- config.py supplies SECRET_KEY for CSRF protection used by Flask-WTF.
+New UI for login, feature, and course detail pages
 
----
+Passing unit test suite
 
-## 💡 Features (Milestone 1)
-
-* Flask app runs with no errors
-* Routes `/`, `/feature`, `/auth/login` render correctly
-* WTForms login form validates and flashes “Login not implemented.”
-* Static progress bar demo (60 %)
-* Base template with navigation and flash message area
-* SQLite + SQLAlchemy configured but not used yet
-* as well as in new contributions updated the base.html to use new structure
-* styles.css was adjusted with an expanded layout (nav, flashes, progress bar)
-* uploaded the screenshots to //docs and updated the pages that had changes
-
----
-
-## 🎯 Next Steps
-
-* **M2:** Connect database and calculate real progress dynamically
-* **M3:** Add dashboards for students and instructors
-
----
-
-## 📸 Screenshot
-
-Here’s the M1 prototype running locally:
+Repo tagged as m2
 
 
-#### Home Page
-<img width="437" height="304" alt="UI Screenshot" src="docs/home.png" />
+### 👥 Team Roles (Updated for M2)
+Thao — UI / Front-End
 
-#### Feature Page
-<img width="437" height="304" alt="UI Screenshot" src="docs/featurepage.png" />
+* Login page HTML/CSS with hero video
 
-#### Login Page
-<img width="437" height="304" alt="Screenshot 2025-11-12 at 12 28 46 AM" src="https://github.com/user-attachments/assets/e5ab27cd-e301-4c7d-a3a4-3598d8f3890e" />
+* Homepage & Feature page hero sections
+
+* Course Detail UI (progress bar, modules, completion badge)
+
+* Integrated AI-generated images + logo
+
+* Updated base.html layout
+
+* Ensured UI matches sketches
+
+Mareli — Authentication
+
+* WTForms LoginForm
+
+* Login/logout routes
+
+* Flask-Login integration
+
+* Session handling
+
+Jacob — Backend Progress & Models
+
+* SQLAlchemy models (User, Course, Module)
+
+* Course progress calculation
+
+* /courses/<id> backend logic
+
+* Test structure
+
+## 📸 Screenshots 
+
+### Home Page
 
 
-#### Login Not implemented
-<img width="437" height="304" alt="image" src="https://github.com/user-attachments/assets/63066ee3-6091-44a3-ad87-099e4bf320cb" />
+### Feature Page
 
----
 
-# 🖼️ UI Sketches (All Milestones)
 
-Below are the wireframes for TMJ, illustrating the planned UI layout for all project milestones.
+### Login Page
 
----
 
-## **Milestone 1 — Basic Static UI Layout**
+### Course Detail Page
 
-### **Home Page Sketch**
-<img width="437" src="docs/home-page.png" />
 
-### **Feature Demo Sketch**
-<img width="437" src="docs/feature-demo.png" />
+## 🎯 Next Steps (M3)
 
-### **Login Page Sketch**
-<img width="437" src="docs/login.png" />
+Student dashboard (multiple courses)
 
----
+Instructor dashboard
 
-## **Milestone 2 — Dynamic Course Progress Pages**
+Badge/achievement system
 
-### **Course In Progress**
-_Shows real-time completion values using database data._
-<br>
-<img width="437" src="docs/course-in-progress.png" />
+Real-time progress updates
 
-### **Course Completed**
-_Displays when a student finishes all lessons and objectives._
-<br>
-<img width="437" src="docs/course-completed.png" />
+Improved module flow UX
 
----
-
-## **Milestone 3 — Student Dashboard**
-
-### **Student Dashboard Sketch**
-_Overall progress summary, current course details, and upcoming tasks._
-<br>
-<img width="437" src="docs/user-page.png" />
-
----
-
-## 👥 Team TMJ's Roles (M1)
-- **Thao (T)** – Project Lead / Architect: repo setup, `create_app()`, blueprints, README.  
-- **Mareli (M)** – Frontend: HTML templates, CSS, progress bar layout.  
-- **Jacob (J)** – Backend: WTForms LoginForm, models, form validation logic.
-
----
-
-## ✅ Milestone 1 Deliverables:
-
-* One-page concept summary (PDF)
-* Working Flask scaffold (HTML stubs only)
-* Tagged repo release `m1`
 
 
