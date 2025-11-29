@@ -49,19 +49,19 @@ pytest
 
 ## 🧱 Tech Stack
 
-* - Flask (backend + routing)
+- Flask (backend + routing)
 
-* - Flask-SQLAlchemy (SQLite database)
+- Flask-SQLAlchemy (SQLite database)
 
-* - Flask-Login (authentication)
+- Flask-Login (authentication)
 
-* - WTForms (form validation)
+- WTForms (form validation)
 
-* - Jinja2 + HTML/CSS (templates & styling)
+-  Jinja2 + HTML/CSS (templates & styling)
 
-* - pytest (unit testing)
+- pytest (unit testing)
 
-* - AI-generated images/video (branding)
+- AI-generated images/video (branding)
  
 ## 🗂️ Project Structure (M2)
 
@@ -105,43 +105,43 @@ tests/
 ## ✨ M2 Features
 ### 🔐 Login Page (Mareli + Thao)
 
-Flask-Login session management
+- Flask-Login session management
 
-WTForms validation
+- WTForms validation
 
-Neon-style UI
+- Neon-style UI
 
-AI-generated hero video
+- AI-generated hero video
 
 ###  📊 Dynamic Progress Updates (Jacob)
 
-SQLAlchemy User/Course/Module models
+- SQLAlchemy User/Course/Module models
 
-Module tracking → course progress calculation
+- Module tracking → course progress calculation
 
-/courses/<id> shows real progress
+- /courses/<id> shows real progress
 
 ### 🎨 Course Detail UI (Thao)
 
-Course thumbnail
+- Course thumbnail
 
-Progress bar
+- Progress bar
 
-Completed & upcoming modules
+- Completed & upcoming modules
 
-Completion banner
+- Completion banner
 
-Completion badge (AI image)
+- Completion badge (AI image)
 
 ###  🏠 UI Enhancements (Thao)
 
-Homepage hero section
+- Homepage hero section
 
-Feature page hero image
+- Feature page hero image
 
-Updated navigation & layout
+- Updated navigation & layout
 
-Consistent global CSS design
+- Consistent global CSS design
 
 ### 🧪 Unit Tests (M2 Requirement)
 
@@ -155,21 +155,21 @@ All tests passing:
 ```
 ###  ✔ Milestone 2 Deliverables Completed
 
-App runs with no errors
+- App runs with no errors
 
-70%+ MVP functionality met
+- 70%+ MVP functionality met
 
-Login/logout functional
+- Login/logout functional
 
-Database-backed progress updates
+- Database-backed progress updates
 
-All pages extend shared base.html
+- All pages extend shared base.html
 
-New UI for login, feature, and course detail pages
+- New UI for login, feature, and course detail pages
 
-Passing unit test suite
+- Passing unit test suite
 
-Repo tagged as m2
+- Repo tagged as m2
 
 
 ### 👥 Team Roles (Updated for M2)
@@ -227,15 +227,15 @@ Jacob — Backend Progress & Models
 
 ## 🎯 Next Steps (M3)
 
-Student dashboard (multiple courses)
+- Student dashboard (multiple courses)
 
-Instructor dashboard
+- Instructor dashboard
 
-Badge/achievement system
+- Badge/achievement system
 
-Real-time progress updates
+- Real-time progress updates
 
-Improved module flow UX
+- Improved module flow UX
 
 
 
