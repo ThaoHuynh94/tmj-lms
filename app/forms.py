@@ -11,7 +11,7 @@
 from flask_wtf import FlaskForm
 
 # Import specific field types that will appear on the form
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 
 # Import built-in validators (like "required" fields)
 from wtforms.validators import DataRequired
@@ -56,3 +56,8 @@ class LoginForm(FlaskForm):
 # 4. Flask-WTF automatically injects a hidden CSRF token
 #    (via {{ form.hidden_tag() }}) using SECRET_KEY from config.py.
 # -------------------------------------------------------------
+
+#Simple form: one textarea & submit button.
+class ModuleNoteForm(FlaskForm):
+    content = TextAreaField("Notes")
+    submit = SubmitField("Save notes")

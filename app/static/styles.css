@@ -713,3 +713,34 @@ body {
   display: block;
 }
 
+/* ==========================
+   MODULE NOTES SECTION
+   ========================== */
+
+.course-section-notes {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.notes-module-label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.notes-preview {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+}
+

@@ -4,10 +4,7 @@
 
 {% block content %}
 
-{# 
-  Provide safe defaults so the page can render even if
-  backend doesn't pass real data yet (helpful for M2 demo).
-#}
+{# Safe defaults so the page renders even if backend doesn't pass real data #}
 {% set course_name = course_name or "Intro to Python" %}
 {% set status = status or "completed" %}
 {% set status_label = status_label or "Completed" %}
@@ -67,6 +64,44 @@
     </ul>
   </section>
 
+  <!--  NEW: MODULE NOTES SECTION -->
+  <section class="course-section course-section-notes">
+    <h2>My notes for this module</h2>
+
+    {% if current_module %}
+      <p class="notes-module-label">
+        Module: {{ current_module.title }}
+      </p>
+
+      <form method="post">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+          {{ form.content.label(class="form-label") }}
+          {{ form.content(
+               class="form-input form-textarea",
+               rows="4",
+               placeholder="Write your thoughts, questions, or reminders here…"
+          ) }}
+        </div>
+
+        <button type="submit" class="btn-primary">
+          {{ form.submit.label.text }}
+        </button>
+      </form>
+
+      {% if module_note and module_note.content %}
+        <div class="notes-preview">
+          <h3>Last saved note</h3>
+          <p>{{ module_note.content }}</p>
+        </div>
+      {% endif %}
+    {% else %}
+      <p>No modules found for this course yet, so notes are disabled.</p>
+    {% endif %}
+  </section>
+  <!--  END NOTES SECTION -->
+
   <!-- COMPLETION BADGE (only when done) -->
   {% if status == "completed" or progress_percent == 100 %}
   <section class="course-section course-section-completed-banner">
@@ -87,3 +122,4 @@
 </section>
 
 {% endblock %}
+
