@@ -744,3 +744,20 @@ body {
   border: 1px solid #c7d2fe;
 }
 
+
+/* ==========================
+  HOMEPAGE FEATURES
+   ========================== */
+
+.home-feature-list {
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.home-feature-list li {
+  margin-bottom: 0.4rem;
+}
+
+
