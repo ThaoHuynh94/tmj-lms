@@ -11,7 +11,7 @@
 from flask_wtf import FlaskForm
 
 # Import specific field types that will appear on the form
-from wtforms import StringField, PasswordField, SubmitField, TextAreaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 
 # Import built-in validators (like "required" fields)
 from wtforms.validators import DataRequired
@@ -35,7 +35,7 @@ class LoginForm(FlaskForm):
     # Password input field (text is hidden as dots)
     # Also required by the DataRequired validator.
     password = PasswordField("Password", validators=[DataRequired()])
-
+    remember_me = BooleanField("Remember Me")
     # Submit button labeled "Sign In"
     # When clicked, it sends a POST request back to /auth/login.
     submit = SubmitField("Sign In")

@@ -17,7 +17,7 @@
        =========================== -->
   <header class="site-header">
 
-    <!-- Left: TMJ Logo (click = go home) -->
+    <!-- Left: TMJ Logo (Home link) -->
     <div class="site-brand">
       <a href="{{ url_for('main.index') }}" class="nav-logo">
         <img src="{{ url_for('static', filename='img/tmj-logo.png') }}"
@@ -29,21 +29,51 @@
     <!-- Right: Navigation Links -->
     <nav class="site-nav">
       <ul>
-        <!-- Highlight current page using Flask's "request.path" -->
-        <li><a href="{{ url_for('main.index') }}" 
-               class="{% if request.path == url_for('main.index') %}active{% endif %}">
-          Home
-        </a></li>
 
-        <li><a href="{{ url_for('main.feature') }}" 
-               class="{% if request.path == url_for('main.feature') %}active{% endif %}">
-          Feature
-        </a></li>
+        <!-- Home link -->
+        <li>
+          <a href="{{ url_for('main.index') }}"
+             class="{% if request.path == url_for('main.index') %}active{% endif %}">
+            Home
+          </a>
+        </li>
 
-        <li><a href="{{ url_for('auth.login') }}" 
+        <!-- Feature link -->
+        <li>
+          <a href="{{ url_for('main.feature') }}"
+             class="{% if request.path == url_for('main.feature') %}active{% endif %}">
+            Feature
+          </a>
+        </li>
+
+        {% if current_user.is_authenticated %}
+
+          <!-- Logged-in greeting -->
+          <li>
+            <span class="nav-username">
+              Hi, {{ current_user.username }}
+            </span>
+          </li>
+
+          <!-- Logout -->
+          <li>
+            <a href="{{ url_for('auth.logout') }}">
+              Logout
+            </a>
+          </li>
+
+        {% else %}
+
+          <!-- Login (shown only if logged out) -->
+          <li>
+            <a href="{{ url_for('auth.login') }}"
                class="{% if request.path.startswith('/auth') %}active{% endif %}">
-          Login
-        </a></li>
+              Login
+            </a>
+          </li>
+
+        {% endif %}
+
       </ul>
     </nav>
 
@@ -51,7 +81,6 @@
 
   <!-- ===========================
        FLASH MESSAGE AREA
-       Appears below navbar
        =========================== -->
   <section class="flash-wrapper">
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -65,14 +94,13 @@
 
   <!-- ===========================
        MAIN PAGE CONTENT
-       Each page plugs content here
        =========================== -->
   <main class="site-main">
     {% block content %}{% endblock %}
   </main>
 
   <!-- ===========================
-       FOOTER (Optional)
+       FOOTER
        =========================== -->
   <footer class="site-footer">
     <p>&copy; {{ current_year or 2025 }} TMJ — Track My Journey</p>
