@@ -786,5 +786,15 @@ body {
   font-size: 0.95rem;
 }
 
+/* ==========================
+  EXTRA SPACE FOR COURSES
+   ========================== */
+
+.course-progress-card {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+
 
 
