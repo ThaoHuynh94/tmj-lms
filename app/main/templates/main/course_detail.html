@@ -23,9 +23,22 @@
     </div>
 
     <div class="course-header-media">
+      {# Pick a thumbnail based on the course title #}
+      {% set thumb = 'img/course-python.png' %}
+
+      {% if course and course.title == 'Study Skills & Habits' %}
+        {% set thumb = 'img/course-study-skills.png' %}
+      {% elif course and course.title == 'Time Management Essentials' %}
+        {% set thumb = 'img/course-time-management.png' %}
+      {% elif course and course.title == 'Effective Note-Taking' %}
+        {% set thumb = 'img/course-note-taking.png' %}
+      {% elif course and course.title == 'Mindfulness for Students' %}
+        {% set thumb = 'img/course-mindfulness.png' %}
+      {% endif %}
+
       <img
-        src="{{ url_for('static', filename='img/course-python.png') }}"
-        alt="Course thumbnail"
+        src="{{ url_for('static', filename=thumb) }}"
+        alt="Course thumbnail for {{ course.title if course else 'course' }}"
         class="course-thumbnail"
       >
     </div>
