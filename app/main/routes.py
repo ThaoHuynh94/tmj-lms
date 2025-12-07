@@ -86,16 +86,21 @@ def index():
 
 @main_bp.route("/feature")
 def feature():
-    """Simple feature demo page wired to real progress data."""
+    """
+    Feature demo page wired to real progress data
+    for ALL of the student's courses.
+    """
 
-    course = Course.query.first()
-    modules = []
-    status = "not-started"
-    status_label = "Not started"
-    progress_percent = 0
-    completion_date = "—"
+    # Get all courses (for the logged-in user if possible)
+    if current_user.is_authenticated:
+        courses = Course.query.filter_by(user_id=current_user.id).all()
+    else:
+        courses = Course.query.all()
 
-    if course:
+    course_cards = []
+
+    for course in courses:
+        # Load this course's module progress for this user
         query = ModuleProgress.query.filter_by(course_id=course.id)
         if current_user.is_authenticated:
             query = query.filter_by(user_id=current_user.id)
@@ -105,6 +110,17 @@ def feature():
             update_course_progress(course, modules)
         )
 
+        course_cards.append(
+            {
+                "course": course,
+                "modules": modules,
+                "status": status,
+                "status_label": status_label,
+                "progress_percent": progress_percent,
+                "completion_date": completion_date,
+            }
+        )
+
     streak_days = current_user.streak_days if current_user.is_authenticated else 0
     reminder_message = (
         get_reminder_message(current_user) if current_user.is_authenticated else None
@@ -112,12 +128,7 @@ def feature():
 
     return render_template(
         "main/feature.html",
-        course=course,
-        modules=modules,
-        status=status,
-        status_label=status_label,
-        progress_percent=progress_percent,
-        completion_date=completion_date,
+        course_cards=course_cards,
         streak_days=streak_days,
         reminder_message=reminder_message,
     )
