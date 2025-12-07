@@ -20,14 +20,19 @@ def create_test_app():
 def test_login_form_valid_data():
     app = create_test_app()
     with app.test_request_context("/auth/login", method="POST"):
-        # Change "username" to whatever your LoginForm field is called
-        form = LoginForm(username="student1", password="secret123")
+        form = LoginForm(username="student1", password="password123")
         assert form.validate() is True
 
 
 def test_login_form_missing_username():
     app = create_test_app()
     with app.test_request_context("/auth/login", method="POST"):
-        form = LoginForm(username="", password="secret123")
+        form = LoginForm(username="", password="password123")
         assert form.validate() is False
 
+
+def test_login_form_missing_password():
+    app = create_test_app()
+    with app.test_request_context("/auth/login", method="POST"):
+        form = LoginForm(username="student1", password="")
+        assert form.validate() is False
