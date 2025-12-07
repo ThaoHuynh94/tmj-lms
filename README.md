@@ -153,10 +153,36 @@ app/
 ### **🧪 Testing**
 All tests pass:
 ```bash
-3 passed in 0.39s
+================================ test session starts ========================================================
+platform darwin -- Python 3.11.5, pytest-9.0.0, pluggy-1.6.0
+rootdir: /Users/iris/tmj-lms
+plugins: anyio-3.5.0, cov-7.0.0
+collected 12 items                                                                                                                                                                                         
+
+tests/test_forms.py ...                                                                                                                                                                              [ 25%]
+tests/test_models.py ...                                                                                                                                                                             [ 50%]
+tests/test_routes.py ......                                                                                                                                                                          [100%]
+
+=================================warnings summary ==============================================================
+tests/test_routes.py::test_course_detail_after_login_with_progress
+tests/test_routes.py::test_course_detail_after_login_with_progress
+  /Users/iris/tmj-lms/app/__init__.py:30: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    return User.query.get(int(user_id))
+
+tests/test_routes.py::test_course_detail_after_login_with_progress
+  /Users/iris/anaconda3/lib/python3.11/site-packages/flask_sqlalchemy/query.py:30: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    rv = self.get(ident)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================= 12 passed in 0.95s =================================================
 ```
 
-Routes tested: `/`, `/feature`, `/auth/login`.
+**Routes tested:**  
+- `/` – Home page  
+- `/feature` – Multi-course dashboard  
+- `/auth/login` – Login (GET + POST)  
+- `/auth/logout` – Logout flow  
+- `/courses/<id>` – Redirect when not logged in + render when authenticated  
 
 ---
 
