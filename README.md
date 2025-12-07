@@ -121,7 +121,7 @@ app/
 | Role | Team Member | Key Responsibilities |
 | :--- | :--- | :--- |
 | **UI / Front-End** | Thao | All major UI/UX, Global CSS, Multi-course dashboard, Course Detail UI, Module Notes, Streak/Reminder UI, Unit tests, `seed.py` demo database. |
-| **Documentation** | Thao | Wrote the full **Milestone 2 2-page PDF deliverable**, including Updated Concept Overview, 7 Use Cases, Implementation Summary, and Testing Plan. Also authored and maintained the README. |
+| **Documentation** | Thao | Wrote **Milestone 2 PDF deliverable**, including Updated Concept Overview, 7 Use Cases, Implementation Summary, and Testing Plan. Also authored and maintained the README. |
 | **Authentication** | Mareli | WTForms LoginForm, Login/Logout routes, Password hashing, Flask-Login integration, Session handling. |
 | **Backend Progress & Models** | Jacob | SQLAlchemy models, ModuleProgress logic, Course progress calculation, Streak logic, Reminder logic, Dynamic backend routes. |
 
