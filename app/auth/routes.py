@@ -56,8 +56,8 @@ def login():
 
         login_user(user, remember=remember_flag)
 
-        # After real authentication is implemented, update the user's streak:
-        # update_streak_for_user(user)
+        #Update the user's streak:
+        update_streak_for_user(user)
 
         # Redirect to next page or homepage
         next_page = request.args.get("next")
