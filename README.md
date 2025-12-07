@@ -154,6 +154,7 @@ app/
 All tests pass:
 ```bash
 3 passed in 0.39s
+```
 
 Routes tested: `/`, `/feature`, `/auth/login`.
 
