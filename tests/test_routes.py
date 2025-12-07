@@ -1,30 +1,157 @@
+# tests/test_routes.py
+
 import os
 import sys
 
 # Add project root to Python path
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from app import create_app
+from app import create_app, db
+from app.models import User, Course, ModuleProgress
+
+
+def create_test_app():
+    app = create_app()
+    app.config["TESTING"] = True
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
+    app.config["WTF_CSRF_ENABLED"] = False  # easier POSTs in tests
+    return app
+
 
 def test_home_page():
-    app = create_app()
-    client = app.test_client()
+    app = create_test_app()
+    with app.app_context():
+        db.create_all()
 
+    client = app.test_client()
     response = client.get("/")
     assert response.status_code == 200
 
-def test_feature_page():
-    app = create_app()
-    client = app.test_client()
 
+def test_feature_page_no_data():
+    """
+    Even with no courses in the DB, /feature should render (with the empty state message).
+    """
+    app = create_test_app()
+    with app.app_context():
+        db.create_all()
+
+    client = app.test_client()
     response = client.get("/feature")
     assert response.status_code == 200
 
-def test_login_page():
-    app = create_app()
-    client = app.test_client()
 
+def test_login_page_get():
+    app = create_test_app()
+    with app.app_context():
+        db.create_all()
+
+    client = app.test_client()
     response = client.get("/auth/login")
     assert response.status_code == 200
 
 
+def test_login_and_logout_flow():
+    """
+    Create a user, log in via /auth/login, then log out via /auth/logout.
+    """
+    app = create_test_app()
+    with app.app_context():
+        db.create_all()
+
+        user = User(username="student1", email="student@example.com")
+        user.set_password("password123")
+        db.session.add(user)
+        db.session.commit()
+
+    client = app.test_client()
+
+    # login
+    resp_login = client.post(
+        "/auth/login",
+        data={"username": "student1", "password": "password123"},
+        follow_redirects=True,
+    )
+    assert resp_login.status_code == 200
+    assert b"Invalid username or password" not in resp_login.data
+
+    # logout
+    resp_logout = client.get("/auth/logout", follow_redirects=True)
+    assert resp_logout.status_code == 200
+    # after logout, we should see the login page again
+    assert b"Welcome Back" in resp_logout.data
+
+
+def test_course_detail_requires_login():
+    """
+    /courses/<id> should redirect to /auth/login when the user is not logged in.
+    """
+    app = create_test_app()
+    with app.app_context():
+        db.create_all()
+
+        user = User(username="student2")
+        user.set_password("password123")
+        db.session.add(user)
+        db.session.commit()
+
+        course = Course(user_id=user.id, title="Intro to Python")
+        db.session.add(course)
+        db.session.commit()
+
+        course_id = course.id
+
+    client = app.test_client()
+    resp = client.get(f"/courses/{course_id}")
+    assert resp.status_code == 302
+    assert "/auth/login" in resp.headers["Location"]
+
+
+def test_course_detail_after_login_with_progress():
+    """
+    After logging in and creating a course + ModuleProgress record,
+    /courses/<id> should render the course detail page with progress UI.
+    """
+    app = create_test_app()
+    with app.app_context():
+        db.create_all()
+
+        # user
+        user = User(username="student3")
+        user.set_password("password123")
+        db.session.add(user)
+        db.session.commit()
+
+        # course
+        course = Course(user_id=user.id, title="Intro to Python")
+        db.session.add(course)
+        db.session.commit()
+
+        # module progress
+        mp = ModuleProgress(
+            user_id=user.id,
+            course_id=course.id,
+            module_name="Getting Started",
+            percent_complete=80,
+        )
+        db.session.add(mp)
+        db.session.commit()
+
+        course_id = course.id
+
+    client = app.test_client()
+
+    # login first
+    resp_login = client.post(
+        "/auth/login",
+        data={"username": "student3", "password": "password123"},
+        follow_redirects=True,
+    )
+    assert resp_login.status_code == 200
+
+    # now hit the course detail page
+    resp_course = client.get(f"/courses/{course_id}")
+    assert resp_course.status_code == 200
+    assert b"Intro to Python" in resp_course.data
+    assert b"Course progress" in resp_course.data
+    assert b"My notes for this module" in resp_course.data
