@@ -155,3 +155,14 @@ def test_course_detail_after_login_with_progress():
     assert b"Intro to Python" in resp_course.data
     assert b"Course progress" in resp_course.data
     assert b"My notes for this module" in resp_course.data
+    
+def test_404_page_renders():
+    app = create_test_app()
+    with app.app_context():
+        db.create_all()
+
+    client = app.test_client()
+    resp = client.get("/this-route-does-not-exist")
+    assert resp.status_code == 404
+    assert b"Page Not Found" in resp.data  # match text from your 404.html
+
